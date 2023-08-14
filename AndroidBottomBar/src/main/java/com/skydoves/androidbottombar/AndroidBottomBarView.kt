@@ -378,6 +378,17 @@ class AndroidBottomBarView @JvmOverloads constructor(
     )
   }
 
+  fun choose(position: Int){
+    //
+    post {
+              indicator.x = itemWidth * position + indicatorPadding
+              previousPosition = positionOffset
+            }
+    //
+     val bottomMenuItemView = getBottomMenuItemView(position)
+          onMenuItemClickListener.invoke(bottomMenuItemView.config, bottomMenuItemView)
+  }
+
   /** sets an [OnMenuItemSelectedListener]. */
   fun setOnMenuItemSelectedListener(onMenuItemSelectedListener: OnMenuItemSelectedListener) {
     this.onMenuItemSelectedListener = onMenuItemSelectedListener
